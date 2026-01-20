@@ -11,8 +11,8 @@ public class WeeklyData {
     // TODO: Declare a private array to store the week’s data
     //       Choose an appropriate type (double[] or int[])
     //       Create other instance variables as necessary
-    
-
+    private int[] moviesWatched;
+    private int moviesGoal;
 
     // -------------------------------------------------------------
     // Constructor
@@ -28,8 +28,11 @@ public class WeeklyData {
         // TODO: Create a new array with the same length as input
         // TODO: Copy each value from input into the internal data array
         // NOTE: Do NOT do this.data = input; (that would create aliasing)
+        this.moviesWatched = new int[input.length];
+        for (int i = 0; i < input.length; i++) {
+            this.moviesWatched[i] = (int) input[i];
+        }
     }
-
 
     // -------------------------------------------------------------
     // getTotal
@@ -43,7 +46,11 @@ public class WeeklyData {
         // TODO: Create a variable to store the running total
         // TODO: Use a loop to add each value in the array to the total
         // TODO: Return the total
-        return 0.0; // replace with your calculated total
+        int total = 0;
+        for (int i = 0; i < moviesWatched.length; i++) {
+            total += moviesWatched[i];
+        }
+        return total;
     }
 
 
@@ -60,9 +67,13 @@ public class WeeklyData {
         // TODO: If the array length is 0, return 0.0
         // TODO: Otherwise, divide the total by the number of elements
         // Hint: You may call getTotal()
-        return 0.0; // replace with your calculated average
+        if (moviesWatched.length == 0) {
+            return 0.0;
+        }
+        if (moviesWatched.length > 0) {
+            return getTotal() / moviesWatched.length;
+        }
     }
-
 
     // -------------------------------------------------------------
     // getMax
@@ -76,7 +87,13 @@ public class WeeklyData {
         // TODO: Assume the first value is the current maximum
         // TODO: Loop through the rest of the array and update max as needed
         // TODO: Return the maximum value found
-        return 0.0; // replace with the maximum value
+        int max = moviesWatched[0];
+        for (int i = 1; i < moviesWatched.length; i++) {
+            if (moviesWatched[i] > max) {
+                max = moviesWatched[i];
+            }
+        }
+        return max;
     }
 
 
@@ -92,7 +109,13 @@ public class WeeklyData {
         // TODO: Assume the first value is the current minimum
         // TODO: Loop through the rest of the array and update min as needed
         // TODO: Return the minimum value found
-        return 0.0; // replace with the minimum value
+        int min = moviesWatched[0];
+        for (int i = 1; i < moviesWatched.length; i++) {
+            if (moviesWatched[i] < min) {
+                min = moviesWatched[i];
+            }
+        }
+        return min;
     }
 
 
@@ -115,6 +138,10 @@ public class WeeklyData {
         // TODO: Loop through the data array
         // TODO: Append each value with a day label (Day 1, Day 2, etc.)
         // TODO: Return the completed String
-        return ""; // replace with your formatted output
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < moviesWatched.length; i++) {
+            sb.append("Day ").append(i + 1).append(": ").append(moviesWatched[i]).append("\n");
+        }
+        return sb.toString();
     }
 }
