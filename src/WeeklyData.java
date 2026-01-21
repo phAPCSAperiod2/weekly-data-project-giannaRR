@@ -64,16 +64,11 @@ public class WeeklyData {
      *         or 0.0 if the array is empty
      */
     public double getAverage() {
-        // TODO: If the array length is 0, return 0.0
-        // TODO: Otherwise, divide the total by the number of elements
-        // Hint: You may call getTotal()
-        if (moviesWatched.length == 0) {
-            return 0.0;
-        }
-        if (moviesWatched.length > 0) {
-            return getTotal() / moviesWatched.length;
-        }
+    if (moviesWatched.length == 0) {
+        return 0.0;
     }
+    return getTotal() / (double) moviesWatched.length; // Ensure division is done in double
+}
 
     // -------------------------------------------------------------
     // getMax
