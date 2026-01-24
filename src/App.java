@@ -1,14 +1,32 @@
 import java.util.Scanner;
 
 /**
- * Instructions:
- * - Complete the WeeklyData.java class first.
- * - Use this App class to collect user input and test your WeeklyData methods.
- * - Follow all TODOs carefully.
- * - Do NOT hard-code values — use loops and method calls.
+ * App class - Movie Tracker Application
+ * 
+ * This application tracks the number of movies watched each day of the week
+ * and provides analysis including total, average, minimum, and maximum values.
+ * It collects user input for their weekly movie-watching goal and daily movie counts,
+ * then displays statistics and feedback based on whether the goal was met.
+ * 
+ * @author Student
+ * @version 1.0
  */
 public class App {
 
+    /**
+     * Main method - Entry point of the Movie Tracker application.
+     * 
+     * This method:
+     * 1. Creates a Scanner for user input
+     * 2. Prompts the user to set a goal for movies to watch
+     * 3. Collects daily movie count data for 7 days with input validation
+     * 4. Creates a WeeklyData object with the collected data
+     * 5. Displays analysis results (total, average, min, max)
+     * 6. Shows the complete weekly data
+     * 7. Provides feedback on whether the weekly goal was met
+     * 
+     * @param args Command-line arguments (not used in this application)
+     */
     public static void main(String[] args) {
 
         // -------------------------------------------------------------
@@ -20,8 +38,9 @@ public class App {
         // TODO 2: Give information about your program
         //         Ask the user about their goals (if applicable)
         // -------------------------------------------------------------
-        System.out.println("This program tracks the number of movies you watch in a week!");
-        System.out.print("What is your goal for the number of movies to watch this week? ");
+        System.out.println("This program tracks the number of movies you watch in a week! 📽️ 🍿");
+        System.out.println("What is your goal for the number of movies to watch this week? ");
+        System.out.println("");
         int moviesGoal = input.nextInt();
 
         // -------------------------------------------------------------
@@ -80,15 +99,17 @@ public class App {
 
         // -------------------------------------------------------------
         // TODO 8: Give the user insights about their week
-        //         --> "You need to drink more water next week!"
-        //         --> "You were very hydrated this week!"
-        //         --> etc.
+        //       Compare the total to the goal and provide feedback
         // -------------------------------------------------------------
+        int suggestedGoal;
         if (weeklyData.getTotal() < moviesGoal) {
-            System.out.println("You didn't meet your goal of " + moviesGoal + " movies this week. Keep trying!");
+            System.out.println("You didn't meet your goal of " + moviesGoal + " movies this week. 😞");
+            suggestedGoal = moviesGoal - 5;
+            System.out.println("Suggestion for next week: Consider decreasing your goal to " + suggestedGoal + " movies to make it more achievable.");
         } else {
-            System.out.println("Great job! You met your goal of " + moviesGoal + " movies this week!");
-            System.out.println("Maybe try another actvity or start your goal for the next week");
+            System.out.println("Great job! You met your goal of " + moviesGoal + " movies this week! 🎉");
+            suggestedGoal = moviesGoal + 5;
+            System.out.println("Suggestion for next week: You could challenge yourself by increasing your goal to " + suggestedGoal + " movies!");
         }
 
     }
